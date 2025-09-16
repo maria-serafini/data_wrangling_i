@@ -51,10 +51,11 @@ litters_df <-
 Import pups data set 
 ```{r}
 pups_df <-
-  read_csv("data/FAS_pups.csv", 
-           skip = 3, 
-           na = c("NA", ".", "")
-           )
+  read_csv(
+    "data/FAS_pups.csv", 
+    skip = 3, 
+    na = c("NA", ".", "")
+    )
 
 pups_df <-
   janitor::clean_names(pups_df)
@@ -96,5 +97,11 @@ pulse_df <-
 ```{r eval = FALSE}
 litters_df_base <-
   read.csv("data/FAS_litters.csv")
+```
+
+## What about data explorting?
+
+```{r}
+write_csv(fotr_df, "data/fotr_df.csv")
 ```
 
