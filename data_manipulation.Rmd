@@ -8,6 +8,7 @@ library(tidyverse)
 ```
 
 
+importa datasets
 ```{r}
 litters_df <-
   read_csv("data/FAS_litters.csv", na = c("NA", ".", ""))
@@ -19,4 +20,52 @@ pups_df <-
 pups_df <-
   janitor::clean_names(pups_df)
 ```
+
+
+## 'select'
+
+'select' selects variables from dataframe
+
+```{r}
+select(litters_df, group, litter_number, gd0_weight)
+```
+
+select a range
+```{r}
+select(litters_df, group:gd_of_birth)
+```
+
+select by removal
+```{r}
+select(litters_df, -group)
+select(litters_df, -group:gd_of_birth)
+```
+
+select by prefix
+```{r}
+select(litters_df, group, starts_with("gd"))
+```
+
+rearrange by selecting
+```{r}
+select(litters_df, starts_with("gd"), group)
+select(litters_df, litter_number, everything()) #gives litter number first and then everything in dataset
+
+relocate(litters_df, litter_number)
+```
+
+rename by selecting
+```{r}
+select(litters_df, GROUP = group, everything()) #renaming variable group to GROUP and then keeping everything else
+rename(litters_df, GROUP = group) #renaming variable group to GROUP
+```
+
+what if I only select one variable?
+```{r}
+select(litters_df, group) #selecting one variable, give df with just that variable
+
+pull(litters_df, group) #gives vector, NEVER USE THIS, don't pull variable out of df to manipulate
+litters_df$group #same as pull above
+```
+
 
