@@ -135,4 +135,17 @@ arrange(litters_df, gd0_weight) #NAs are placed at end
 ```
 
 
+## PIPES
+
+#pipe operator cmd + shift + m
+```{r}
+litters_df <-
+  read_csv("data/FAS_litters.csv", na = c("NA", ".", "")) |>
+  janitor::clean_names() |> 
+  select(group, litter_number, starts_with("gd")) |> 
+  drop_na() |> 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight
+  )
+```
 
