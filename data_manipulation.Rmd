@@ -116,8 +116,23 @@ use 'mutate()' to create or modify variables
 ```{r}
 mutate(
   litters_df,
-  wt_gain = gd18_weight - gd0_weight, #adds new variable to dataframe tha
+  wt_gain = gd18_weight - gd0_weight, #adds new variable to dataframe that subtracts value of gd0_weight from value of gd18_weight
   group = str_to_lower(group) #makes lowercase
 )
 ```
+
+## 'arrange'
+
+'arrange()' arranges things
+```{r}
+arrange(litters_df, pups_born_alive) #arranges in ascending order
+arrange(litters_df, desc(pups_born_alive)) #arranges in descending order 
+
+arrange(litters_df, group, pups_born_alive)
+arrange(litters_df, desc(group), pups_born_alive)
+
+arrange(litters_df, gd0_weight) #NAs are placed at end
+```
+
+
 
