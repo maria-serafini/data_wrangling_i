@@ -665,3 +665,25 @@ litters_df <-
     ## 
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+pipes learning assessment - import and tidy the pups data in piped chain
+of commands.
+
+``` r
+pups_df <-
+  read_csv("data/FAS_pups.csv", skip = 3, na = c("NA", ".", "")) |>
+  janitor::clean_names() |> 
+  filter(sex == 1) |> 
+  select(-pd_ears) |> 
+  mutate(pd_pivot_gte7 = pd_pivot >= 7
+  )
+```
+
+    ## Rows: 313 Columns: 6
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (1): Litter Number
+    ## dbl (5): Sex, PD ears, PD eyes, PD pivot, PD walk
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
